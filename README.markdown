@@ -23,7 +23,7 @@ where args are
 
 Example of use
 
-Retriving token from the keyring
+Retriving token from the OSX Keychain
 
 ```
 ./pull.py --user=binarytemple --dest=/tmp/gists -k
@@ -34,3 +34,7 @@ Retrieving token from the command line
 ```
 ./pull.py --user=foobar --dest=/tmp/gists -t 988ca1922099000000000000007184a9
 ```
+
+Configuring the OSX Keychain
+
+![Configuring the OSX Keychain](https://raw.githubusercontent.com/binarytemple/backup-gists/master/keychain-example.png)
