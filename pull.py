@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# Clone or update all a user's gists
-# curl -ks https://raw.github.com/gist/5466075/gist-backup.py | USER=fedir python
-# USER=fedir python gist-backup.py
 
 import json
 import urllib
