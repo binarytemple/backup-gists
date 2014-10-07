@@ -57,7 +57,7 @@ if token == None or user == None:
     print "either supply token (--token) on command line and provide user (--user), or choose --use-keychain and provide username"
 
 if dest == None:
-    print "target (--target) not specified"
+    print "dest (--dest) not specified"
     exit(1)
 
 if not os.path.isdir(dest):
