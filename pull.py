@@ -82,22 +82,32 @@ for page in range(pages):
     pageNumber = str(page + 1)
     print "Processing page number " + pageNumber
     #pageUrl = 'https://api.github.com/users/' + USER  + '/gists?page=' + pageNumber + '&per_page=' + str(int(perpage))
-    pageUrl = 'https://api.github.com/gists?page=' + pageNumber + '&per_page=' + str(int(perpage))
-    u = urlopen (pageUrl)
+    pageUrl = 'https://api.github.com/users/' + user + '/gists?page=' + pageNumber + '&per_page=' + str(int(perpage))
+    
+    
+    request = urllib2.Request( pageUrl  )
+    base64string = base64.encodestring('%s:x-oauth-basic' % (token)).replace('\n', '')
+    request.add_header("Authorization", "Basic %s" % base64string)   
+    u = urlopen (request)
+
     gists = json.load(u)
     startd = os.getcwd()
     for gist in gists:
         try:
             gistd = gist['id']
-            gistUrl = 'git://gist.github.com/' + gistd + '.git' 
-            targetdir=dest+ gistd 
+            gistUrl = 'git@gist.github.com:/' + gistd + '.git' 
+            targetdir=dest + gistd 
+
+            print "gist %s trying to get %s into %s" % ( gistd, gistUrl, targetdir )
             if os.path.isdir(targetdir):
                 os.chdir(targetdir)
-                call(['git', 'pull', gistUrl])
+                call(['git', 'pull'])
                 os.chdir(startd)
             else:
                 os.chdir(dest)
                 call(['git', 'clone', gistUrl])
                 os.chdir(startd)
         except Exception as e:
+                print gist
                 print e
+                os.chdir(startd)
