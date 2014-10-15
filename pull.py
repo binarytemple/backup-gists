@@ -60,6 +60,10 @@ if dest == None:
     print "dest (--dest) not specified"
     exit(1)
 
+#safety first!
+if not dest.endswith("/"):
+    dest = dest + "/"
+
 if not os.path.isdir(dest):
     print "target %s is not a directory" % dest
     exit(1)
