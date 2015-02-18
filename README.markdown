@@ -2,14 +2,19 @@
 
 Export all your gists to the local system
 
-## Rationalle
+## Usage
+
+```
+./pull.py --use-keychain --user binarytemple --dest ~/gists/
+```
+
+## Rationale
 
 Searching through your old gists using the github API doesn't always work very well. It can be nice to have them locally for indexing etc.
 
-
 The utility `pull.py` either recieves the github ` x-oauth-basic` token either from the command line or from the OSX Keyring, then retrieves all the specified users gists, both public and private and places them into the directory specified by '--dest'.
 
-Listing the program options:
+## Listing the program options:
 
 ```
 pull.py -h
